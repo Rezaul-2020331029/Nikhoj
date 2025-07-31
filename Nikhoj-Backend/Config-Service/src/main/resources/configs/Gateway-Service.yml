@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Gateway-Service
+  cloud:
+    gateway:
+          routes:
+            - id: User-Service
+              uri: http://localhost:7003
+              predicates:
+                - Path=/user/**
+          discovery:
+            locator:
+              enabled: true
+
+server:
+  port: 7000
+
