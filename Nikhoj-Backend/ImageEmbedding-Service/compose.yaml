@@ -1,0 +1,39 @@
+services:
+  deepface:
+    image: serengil/deepface
+    container_name: deepface-service
+    ports:
+      - "6500:5000"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6500"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - deepface-weights:/root/.deepface/weights
+
+#  # Optional: Add other services like Qdrant
+#  qdrant:
+#    image: qdrant/qdrant:latest
+#    container_name: qdrant-service
+#    ports:
+#      - "6333:6333"
+#      - "6334:6334"
+#    networks:
+#      - app-network
+#    volumes:
+#      - qdrant-data:/qdrant/storage
+#    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  deepface-weights:

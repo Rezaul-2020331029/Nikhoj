@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/Gateway-Service/pom.xml" />
         <option value="$PROJECT_DIR$/Config-Service/pom.xml" />
         <option value="$PROJECT_DIR$/User-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/ImageEmbedding-Service/pom.xml" />
       </list>
     </option>
   </component>
