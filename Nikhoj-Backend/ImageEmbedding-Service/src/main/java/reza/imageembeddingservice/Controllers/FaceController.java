@@ -33,7 +33,7 @@ public class FaceController {
     @PostMapping("/represent")
     public ResponseEntity<RepresentResponse> getImageRepresentation(
             @RequestParam("file") MultipartFile file,
-            @RequestParam(value = "model_name", defaultValue = "VGG-Face") String modelName) {
+            @RequestParam(value = "model_name", defaultValue = "Facenet512") String modelName) {
 
         try {
             if (file.isEmpty()) {

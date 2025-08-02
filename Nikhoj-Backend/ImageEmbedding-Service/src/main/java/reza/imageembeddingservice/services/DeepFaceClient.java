@@ -23,7 +23,7 @@ public class DeepFaceClient {
         this.restTemplate = restTemplate;
     }
 
-    public RepresentResponse getRepresentation(MultipartFile imageFile, String modelName) throws IOException {
+    public RepresentResponse getRepresentation(MultipartFile imageFile, String modelName ) throws IOException {
         String url = deepfaceBaseUrl + "/represent";
 
         HttpHeaders headers = new HttpHeaders();
