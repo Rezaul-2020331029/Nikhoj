@@ -22,13 +22,11 @@ public class QdrantClientConfig {
     public QdrantClient qdrantClient() {
 
 
-        QdrantClient client = new QdrantClient(
+        return new QdrantClient(
                 QdrantGrpcClient.newBuilder(qdrantUrl,6334,true)
                         .withApiKey(apiKey).
                         build()
         );
-
-        return client;
 
     }
 }

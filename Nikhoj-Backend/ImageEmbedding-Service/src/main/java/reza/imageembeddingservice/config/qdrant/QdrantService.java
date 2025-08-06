@@ -170,7 +170,6 @@ public class QdrantService {
 
             Points.SearchPoints searchRequest = Points.SearchPoints.newBuilder()
                     .setCollectionName(collectionName)
-                    .setVectorName(vectorName)
                     .addAllVector(queryVector.getDataList())
                     .setLimit(topK)
                     .build();

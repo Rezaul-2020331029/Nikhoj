@@ -1,0 +1,13 @@
+
+  services:
+    text-embeddings-inference:
+      image: ghcr.io/huggingface/text-embeddings-inference:cpu-ipex-latest
+      command: --model-id Qwen/Qwen3-Embedding-0.6B
+      ports:
+        - "6200:80"
+      volumes:
+        - hf_cache:/data
+      pull_policy: always
+
+  volumes:
+    hf_cache:
