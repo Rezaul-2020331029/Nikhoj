@@ -1,0 +1,93 @@
+package reza.authservice.service;
+
+
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import reza.authservice.dto.LoginRequest;
+import reza.authservice.dto.SignupRequest;
+import reza.authservice.exception.user.DuplicateUserException;
+import reza.authservice.exception.user.UserRegistrationException;
+import reza.authservice.mapper.UserMapper;
+import reza.authservice.model.Role;
+import reza.authservice.model.UserInfo;
+import reza.authservice.repository.UserInfoRepository;
+import reza.authservice.utils.Enums;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+@Service
+public class UserService {
+
+    final UserInfoRepository userInfoRepository;
+    final PasswordEncoder passwordEncoder;
+    final JwtTokenService jwtService;
+    final AuthenticationManager authenticationManager;
+    final RoleService roleService;
+    final UserMapper mapper;
+
+    public UserService(AuthenticationManager authenticationManager, JwtTokenService jwtService, PasswordEncoder passwordEncoder, UserInfoRepository userInfoRepository, RoleService roleService, UserMapper mapper) {
+        this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
+        this.passwordEncoder = passwordEncoder;
+        this.userInfoRepository = userInfoRepository;
+        this.roleService = roleService;
+        this.mapper = mapper;
+    }
+
+    public ResponseEntity<?> authenticate(LoginRequest loginRequest) {
+        try {
+            Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+
+            if (auth.isAuthenticated()) {
+                Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+                String jwtToken = jwtService.createToken(loginRequest.getEmail(), authorities);
+                return ResponseEntity.ok().body(jwtToken);
+            } else {
+                throw new BadCredentialsException("Invalid username or password");
+            }
+        } catch (AuthenticationException e) {
+            throw new BadCredentialsException("Invalid username or password");
+        }
+    }
+
+    public ResponseEntity<?> register(SignupRequest signupRequest) {
+        try{
+            UserInfo user = mapper.singupRequestDtoToUserInfo(signupRequest);
+            user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
+            user.setEmail(signupRequest.getEmail());
+            user.setName(signupRequest.getName());
+            user.setProvider(Enums.AuthProvider.local);
+            user.setProviderId("LOCAL");
+            user.setEmailVerified(false);
+            user.setImageUrl(null);
+            List<Role> roles = new ArrayList<>();
+            System.out.println(roleService.getRoleByName(Enums.RoleType.ROLE_USER));
+
+
+            roles.add(roleService.getRoleByName(Enums.RoleType.ROLE_USER));
+            System.out.println(roles);
+
+            roleService.giveRolesToUser(user, roles);
+            userInfoRepository.save(user);
+            return ResponseEntity.ok().body("Registration Successful");
+
+        }catch (DataIntegrityViolationException e){
+            throw new DuplicateUserException("Invalid Registration Request");
+        }
+        catch (Exception e){
+            System.out.println("cdi" + e.getMessage());
+            throw new UserRegistrationException("Invalid Registration Request");
+        }
+    }
+
+}

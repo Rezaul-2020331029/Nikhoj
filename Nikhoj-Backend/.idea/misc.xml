@@ -10,7 +10,19 @@
         <option value="$PROJECT_DIR$/User-Service/pom.xml" />
         <option value="$PROJECT_DIR$/ImageEmbedding-Service/pom.xml" />
         <option value="$PROJECT_DIR$/TextEmbedding-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/User-Service/Auth-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/ImageEmbedding-Service/Authentication-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Authentication-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Auth-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Post-Service/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/Authentication-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/ImageEmbedding-Service/Authentication-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/User-Service/Auth-Service/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-24" project-jdk-type="JavaSDK">
