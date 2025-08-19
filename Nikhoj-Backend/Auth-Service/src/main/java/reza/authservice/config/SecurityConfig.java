@@ -57,7 +57,7 @@ public class SecurityConfig {
 
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() {
-        return new JwtAuthenticationFilter(jwtTokenService, userDetailsService);
+        return new JwtAuthenticationFilter(jwtTokenService, userDetailsService,userInfoRepository);
     }
 
     //Security Filter chain: Contains policies for all the security

@@ -29,7 +29,61 @@ public class JwtTokenService {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    public String createToken(String username, Collection<? extends GrantedAuthority> roles) {
+//    public String createToken(String username, Collection<? extends GrantedAuthority> roles) {
+//        Map<String,Object> claims = new HashMap<>();
+//        claims.put("roles", roles);
+//        Date now = new Date();
+//        Date validity = new Date(now.getTime() + validityInMilliseconds);
+//
+//        return Jwts.builder()
+//                .setClaims(claims)
+//                .setSubject(username)
+//                .setIssuedAt(now)
+//                .setExpiration(validity)
+//                .signWith(getSignKey(), SignatureAlgorithm.HS256)
+//                .compact();
+//    }
+//
+//    private Key getSignKey() {
+//        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+//        return Keys.hmacShaKeyFor(keyBytes);
+//    }
+//
+//    public String resolveToken(HttpServletRequest req) {
+//        String bearerToken = req.getHeader("Authorization");
+//        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+//            return bearerToken.substring(7);
+//        }
+//        return null;
+//    }
+//
+//    public boolean validateToken(String token) {
+//        try {
+//            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+//            return true;
+//        } catch (SignatureException ex) {
+//            throw new SignatureException("Invalid JWT signature");
+//        } catch (MalformedJwtException ex) {
+//            throw new MalformedJwtException("Invalid JWT token");
+//        } catch (UnsupportedJwtException ex) {
+//            throw new UnsupportedJwtException("Unsupported JWT token");
+//        } catch(ExpiredJwtException ex){
+//            throw new ExpiredJwtException(ex.getHeader(), ex.getClaims(), "The Token Provided is Expired");
+//        } catch (IllegalArgumentException ex) {
+//            throw new IllegalArgumentException("JWT claims string is empty");
+//        }
+//    }
+//
+//    public String getUsername(String token) {
+//        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+//    }
+//
+//    public SecretKey getSecretKey() {
+//        byte[] decodedKey = Base64.getDecoder().decode(secretKey);
+//        return new SecretKeySpec(decodedKey, 0, decodedKey.length, "HmacSHA256");
+//    }
+
+    public String createToken(String userId, Collection<? extends GrantedAuthority> roles) {
         Map<String,Object> claims = new HashMap<>();
         claims.put("roles", roles);
         Date now = new Date();
@@ -37,7 +91,7 @@ public class JwtTokenService {
 
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(username)
+                .setSubject(userId)
                 .setIssuedAt(now)
                 .setExpiration(validity)
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
@@ -59,7 +113,7 @@ public class JwtTokenService {
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+            Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token);
             return true;
         } catch (SignatureException ex) {
             throw new SignatureException("Invalid JWT signature");
@@ -74,8 +128,14 @@ public class JwtTokenService {
         }
     }
 
-    public String getUsername(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    public String getUserId(String token) {
+        return Jwts.parserBuilder().setSigningKey(getSignKey()).build()
+                .parseClaimsJws(token).getBody().getSubject();
+    }
+
+    public UUID getUserUUID(String token) {
+        String userId = getUserId(token);
+        return UUID.fromString(userId);
     }
 
     public SecretKey getSecretKey() {
