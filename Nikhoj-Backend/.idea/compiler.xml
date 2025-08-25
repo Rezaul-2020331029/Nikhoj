@@ -23,18 +23,19 @@
         </processorPath>
         <module name="Auth-Service" />
       </profile>
-      <profile name="Annotation profile for TextEmbedding-Service" enabled="true">
+      <profile name="Annotation profile for TextEmbed-Service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
+        <module name="Post-Service" />
         <module name="ImageEmbedding-Service" />
         <module name="Gateway-Service" />
         <module name="Discovery-Service" />
         <module name="TextEmbedding-Service" />
-        <module name="Post-Service" />
+        <module name="TextEmbed-Service" />
         <module name="User-Service" />
       </profile>
     </annotationProcessing>
@@ -51,6 +52,7 @@
       <module name="Gateway-Service" options="-parameters" />
       <module name="ImageEmbedding-Service" options="-parameters" />
       <module name="Post-Service" options="-parameters" />
+      <module name="TextEmbed-Service" options="-parameters" />
       <module name="TextEmbedding-Service" options="-parameters" />
       <module name="User-Service" options="-parameters" />
     </option>

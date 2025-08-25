@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/Authentication-Service/pom.xml" />
         <option value="$PROJECT_DIR$/Auth-Service/pom.xml" />
         <option value="$PROJECT_DIR$/Post-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/TextEmbed-Service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
