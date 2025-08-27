@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: Discovery-Service
-
-  config:
-    import: optional:configserver:http://localhost:7002
-
