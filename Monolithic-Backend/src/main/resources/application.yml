@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: Monolithic-Backend
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:postgresql://aws-0-ap-south-1.pooler.supabase.com:5432/postgres?sslmode=require
+    username: postgres.xhuxtaljeyejxiraeelg
+    password: tvMsC4YcgdlladlO
+
+  security:
+    oauth2:
+          client:
+            registration:
+              google:
+                client-id: dummy-google-client-id
+                client-secret: dummy-google-client-secret
+                scope: openid,profile,email
+                redirect-uri: http://localhost:8080/login/oauth2/code/google
+              github:
+                client-id: dummy-github-client-id
+                client-secret: dummy-github-client-secret
+                scope: read:user,user:email
+                redirect-uri: http://localhost:8080/login/oauth2/code/github
+            provider:
+              google:
+                authorization-uri: https://accounts.google.com/o/oauth2/auth
+                token-uri: https://oauth2.googleapis.com/token
+                user-info-uri: https://www.googleapis.com/oauth2/v2/userinfo
+              github:
+                authorization-uri: https://github.com/login/oauth/authorize
+                token-uri: https://github.com/login/oauth/access_token
+                user-info-uri: https://api.github.com/user
+
+server:
+  port: 7000
+
+security:
+  jwt:
+    token:
+      secret-key: 6b92c32a9619a918caa8a54fde6d3952e6337d56587db1130491793235efc74e
+    expire-length: 3600000000
+
+
+
+qdrant:
+  url: 89efdb99-52b6-44f7-b24b-2e99ab1b22ec.us-west-2-0.aws.cloud.qdrant.io
+  key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.gl_JJrBYTUh2fwQyoPmauMiqRRrfU4huhidKo0qKRfs

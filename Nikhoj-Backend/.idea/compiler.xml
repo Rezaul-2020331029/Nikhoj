@@ -23,7 +23,7 @@
         </processorPath>
         <module name="Auth-Service" />
       </profile>
-      <profile name="Annotation profile for TextEmbed-Service" enabled="true">
+      <profile name="Annotation profile for TextEmbedding-Service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />

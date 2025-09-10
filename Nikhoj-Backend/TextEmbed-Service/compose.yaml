@@ -1,0 +1,13 @@
+services:
+  embed-api:
+    image: lianghsun/ollama-bge-m3-embed
+    container_name: embed-api
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama:
+    driver: local
