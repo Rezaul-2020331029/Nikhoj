@@ -1,6 +1,8 @@
 package reza.monolithicbackend.POST.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import reza.monolithicbackend.Auth.service.AuthenticationService;
 import reza.monolithicbackend.POST.domains.dtos.request.CreatePostRequest;
@@ -102,4 +104,43 @@ public class PostServiceImpl implements PostService {
         return postRepo.findById(postId)
                 .orElseThrow(() -> new RuntimeException("Post not found with ID: " + postId));
     }
+
+
+    @Override
+    public List<Post> getPostsByPostIds(List<UUID> postIds) {
+        if (postIds == null || postIds.isEmpty()) {
+            return List.of();
+        }
+        return postRepo.findAllById(postIds);
+    }
+
+    @Override
+    public List<Post> getPostsByUserId(UUID userId) {
+        if (userId == null) {
+            return List.of();
+        }
+        return postRepo.findAllByPosterId(userId);
+    }
+
+    @Override
+    public Page<Post> getPostsByPostType(PostType postType, Pageable pageable) {
+        return postRepo.findAllByPostType(postType,pageable);
+    }
+
+    @Override
+    public Page<Post> getPostsByCategory(String category, Pageable pageable) {
+        return postRepo.findAllByCategory(category,pageable);
+    }
+
+    @Override
+    public Page<Post> getPostByThreadId(long threadId, Pageable pageable) {
+        return postRepo.findAllByThreads_ThreadId(threadId,pageable);
+    }
+
+    @Override
+    public Page<Post> getPostByThreadTitle(String threadTitle, Pageable pageable) {
+        return postRepo.findAllByThreads_Title(threadTitle,pageable);
+    }
+
+
 }
