@@ -126,7 +126,9 @@ public class UserService {
             roleService.giveRolesToUser(user, List.of(userRole));
             userInfoRepository.save(user);
 
-            return ResponseEntity.ok("Registration Successful");
+
+
+            return authenticate(new  LoginRequest(signupRequest.getEmail(), signupRequest.getPassword()));
 
         } catch (DataIntegrityViolationException e) {
             throw new DuplicateUserException("User already exists with this email");

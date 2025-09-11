@@ -1,5 +1,6 @@
 package reza.monolithicbackend.Auth.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 

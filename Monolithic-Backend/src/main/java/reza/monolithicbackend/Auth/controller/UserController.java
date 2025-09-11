@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import reza.monolithicbackend.Auth.dto.ChangePassReq;
+import reza.monolithicbackend.Auth.dto.GetUserResponse;
 import reza.monolithicbackend.Auth.dto.LoginRequest;
 import reza.monolithicbackend.Auth.dto.SignupRequest;
 import reza.monolithicbackend.Auth.exception.user.UserNotFoundException;
@@ -67,6 +68,33 @@ public class UserController {
         } catch (Exception e) {
             return BaseResponse.error("Failed to change password: " + e.getMessage(),
                     HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<BaseResponse<GetUserResponse, String>> getUserProfile() {
+        try {
+            UUID id = authenticationService.getCurrentUserId();
+            UserInfo user = userService.getUserById(id);
+
+            GetUserResponse userResponse = new GetUserResponse();
+            userResponse.setId(user.getId());
+            userResponse.setUserRoles(user.getUserRoles().stream()
+                    .map(userRole -> userRole.getRole().getRole())
+                    .collect(java.util.stream.Collectors.toList()));
+            userResponse.setEmail(user.getEmail());
+            userResponse.setEmailVerified(user.isEmailVerified());
+            userResponse.setName(user.getName());
+            userResponse.setCreatedAt(user.getCreatedAt());
+            userResponse.setImageUrl(user.getImageUrl());
+
+
+            return BaseResponse.success("User profile retrieved successfully", userResponse);
+
+        } catch (RuntimeException e) {
+            return BaseResponse.badRequest("Failed to retrieve user profile: " + e.getMessage(), null);
+        } catch (Exception e) {
+            return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, null);
         }
     }
 
