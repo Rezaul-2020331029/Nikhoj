@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import reza.monolithicbackend.Auth.service.AuthenticationService;
 import reza.monolithicbackend.POST.domains.dtos.request.CreatePostRequest;
+import reza.monolithicbackend.POST.domains.dtos.request.GetPostsByFilterReq;
 import reza.monolithicbackend.POST.domains.entities.*;
 import reza.monolithicbackend.POST.repos.ImageUrlRepo;
 import reza.monolithicbackend.POST.repos.PostRepo;
@@ -13,6 +14,8 @@ import reza.monolithicbackend.POST.repos.PostSpecRepo;
 import reza.monolithicbackend.POST.repos.ThreadRepo;
 import reza.monolithicbackend.POST.services.PostService;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.UUID;
 
@@ -140,6 +143,22 @@ public class PostServiceImpl implements PostService {
     @Override
     public Page<Post> getPostByThreadTitle(String threadTitle, Pageable pageable) {
         return postRepo.findAllByThreads_Title(threadTitle,pageable);
+    }
+
+    @Override
+    public Page<Post> getPostsByFilter(GetPostsByFilterReq filter, Pageable pageable) {
+        LocalDate targetDate = filter.getDate().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+
+        return postRepo.findAllByCategoryAndDistrictAndPostTypeAndDateAndThreads_ThreadId(
+                filter.getCategory(),
+                filter.getDistrict(),
+                PostType.valueOf(filter.getType().toUpperCase()),
+                targetDate,
+                filter.getThreadId(),
+                pageable
+        );
     }
 
 

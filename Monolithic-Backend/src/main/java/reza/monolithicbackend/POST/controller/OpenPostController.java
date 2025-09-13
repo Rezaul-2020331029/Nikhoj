@@ -10,10 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reza.monolithicbackend.FaceEmbedding.services.DeepFaceService;
 import reza.monolithicbackend.POST.config.FireBaseService;
-import reza.monolithicbackend.POST.domains.dtos.request.GetPostByPostListReq;
-import reza.monolithicbackend.POST.domains.dtos.request.GetPostsByCategoryReq;
-import reza.monolithicbackend.POST.domains.dtos.request.GetPostsByPostTypeReq;
-import reza.monolithicbackend.POST.domains.dtos.request.GetPostsByThread;
+import reza.monolithicbackend.POST.domains.dtos.request.*;
 import reza.monolithicbackend.POST.domains.dtos.response.BaseResponse;
 import reza.monolithicbackend.POST.domains.entities.Post;
 import reza.monolithicbackend.POST.domains.entities.PostType;
@@ -132,6 +129,21 @@ public class OpenPostController {
 
         } catch (Exception e) {
             return BaseResponse.badRequest("Failed to retrieve posts: " + e.getMessage(), null);
+        }
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<BaseResponse<List<Post>, String>> getPostsByFilter(
+            @RequestBody GetPostsByFilterReq request
+    ) {
+        try {
+            Pageable pageable = PageRequest.of(request.getPage(), request.getLimit(), Sort.by(Sort.Direction.DESC, "created"));
+            Page<Post> postPage = postService.getPostsByFilter(request, pageable);
+            return BaseResponse.success("Posts retrieved successfully", postPage.getContent());
+        } catch (RuntimeException e) {
+            return BaseResponse.badRequest("Failed to retrieve posts: " + e.getMessage(), null);
+        } catch (Exception e) {
+            return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, null);
         }
     }
 

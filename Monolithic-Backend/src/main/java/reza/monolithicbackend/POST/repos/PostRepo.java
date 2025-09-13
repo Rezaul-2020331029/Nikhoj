@@ -10,6 +10,8 @@ import reza.monolithicbackend.POST.domains.entities.Post;
 import reza.monolithicbackend.POST.domains.entities.PostType;
 import reza.monolithicbackend.POST.domains.entities.Threads;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 @Repository
@@ -26,4 +28,15 @@ public interface PostRepo extends ListCrudRepository<Post, UUID> {
     List<Threads> findDistinctThreadsByPosterId(@Param("posterId") UUID posterId);
 
     Page<Post> findAllByThreads_Title(String threadsTitle, Pageable pageable);
+    @Query("SELECT p FROM Post p WHERE p.category = :category AND p.district = :district " +
+            "AND p.postType = :postType AND DATE(p.created) = :date AND p.threads.threadId = :threadId")
+    Page<Post> findAllByCategoryAndDistrictAndPostTypeAndDateAndThreads_ThreadId(
+            @Param("category") String category,
+            @Param("district") String district,
+            @Param("postType") PostType postType,
+            @Param("date") LocalDate date,
+            @Param("threadId") Long threadId,
+            Pageable pageable
+    );
+//    Page<Post> findAllByCategoryAndDistrictAndPostTypeAndCreatedAndThreads_ThreadId(String category, String district, PostType postType, LocalDateTime created, Long threadsThreadId);
 }
