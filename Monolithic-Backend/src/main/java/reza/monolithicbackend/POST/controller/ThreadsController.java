@@ -13,6 +13,7 @@ import reza.monolithicbackend.POST.domains.dtos.response.BaseResponse;
 import reza.monolithicbackend.POST.domains.entities.Threads;
 import reza.monolithicbackend.POST.services.ThreadService;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -92,6 +93,20 @@ public class ThreadsController {
             return BaseResponse.badRequest("Failed to retrieve thread: " + e.getMessage(), null);
         }
     }
+
+
+    @GetMapping("/user")
+    public ResponseEntity<BaseResponse<List<Threads>, String>> getThreadsByUser() {
+        try {
+            UUID userId = authenticationService.getCurrentUserId();
+            List<Threads> threads = threadService.getThreadsByUserId(userId);
+
+            return BaseResponse.success("Threads retrieved successfully", threads);
+        } catch (Exception e) {
+            return BaseResponse.badRequest("Failed to retrieve user threads: " + e.getMessage(), null);
+        }
+    }
+
 
 
 

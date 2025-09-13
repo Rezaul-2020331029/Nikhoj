@@ -6,6 +6,7 @@ import reza.monolithicbackend.POST.domains.dtos.request.SearchThreadReq;
 import reza.monolithicbackend.POST.domains.entities.Threads;
 
 
+import java.util.List;
 import java.util.UUID;
 
 public interface ThreadService {
@@ -17,5 +18,6 @@ public interface ThreadService {
     public Page<Threads> getThreadsByThreadTitle(String title, Pageable pageable);
     public Page<Threads> getThreadsByLocation(String location, Pageable pageable);
     Page<Threads> searchThreads(SearchThreadReq searchReq);
+    List<Threads> getThreadsByUserId(UUID userId);
 
 }

@@ -1,12 +1,14 @@
 package reza.monolithicbackend.POST.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reza.monolithicbackend.Auth.service.AuthenticationService;
 import reza.monolithicbackend.POST.domains.dtos.request.CreateCategoryReq;
 import reza.monolithicbackend.POST.domains.dtos.request.GetSpecsReq;
 import reza.monolithicbackend.POST.domains.dtos.response.BaseResponse;
+import reza.monolithicbackend.POST.domains.entities.Category;
 import reza.monolithicbackend.POST.domains.entities.Specification;
 import reza.monolithicbackend.POST.services.CategoryService;
 
@@ -14,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("/api/guest/category")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -84,6 +86,17 @@ public class CategoryController {
                     .build();
 
             return ResponseEntity.status(500).body(errorResponse);
+        }
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<BaseResponse<List<Category>, String>> getCategories() {
+        try {
+            List<Category> categories = categoryService.findAll();
+            return BaseResponse.success("Categories retrieved successfully", categories);
+        } catch (Exception e) {
+            return BaseResponse.error("Failed to retrieve categories: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR, null);
         }
     }
 

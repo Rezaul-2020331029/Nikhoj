@@ -73,7 +73,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests.
-                                requestMatchers("/api/auth/**", "/error").permitAll()
+                                requestMatchers("/api/auth/**", "/error","/api/guest/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2

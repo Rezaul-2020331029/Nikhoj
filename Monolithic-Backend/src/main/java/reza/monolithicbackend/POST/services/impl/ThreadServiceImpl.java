@@ -8,20 +8,24 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import reza.monolithicbackend.POST.domains.dtos.request.SearchThreadReq;
 import reza.monolithicbackend.POST.domains.entities.Threads;
+import reza.monolithicbackend.POST.repos.PostRepo;
 import reza.monolithicbackend.POST.repos.ThreadRepo;
 import reza.monolithicbackend.POST.services.ThreadService;
 
 
+import java.util.List;
 import java.util.UUID;
 @Service
 public class ThreadServiceImpl implements ThreadService {
 
     private final ThreadRepo threadRepository;
+    private final PostRepo postRepository;
 
 
     @Autowired
-    public ThreadServiceImpl(ThreadRepo threadRepository) {
+    public ThreadServiceImpl(ThreadRepo threadRepository, PostRepo postRepository) {
         this.threadRepository = threadRepository;
+        this.postRepository = postRepository;
     }
     @Override
     public Threads createThread(String title, String description, String location, UUID creatorId) {
@@ -85,7 +89,10 @@ public class ThreadServiceImpl implements ThreadService {
         return threadRepository.findAll(pageable);
     }
 
-
+    @Override
+    public List<Threads> getThreadsByUserId(UUID userId) {
+        return postRepository.findDistinctThreadsByPosterId(userId);
+    }
 
 
 }

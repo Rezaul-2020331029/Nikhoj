@@ -92,7 +92,7 @@ public class UserService {
 //    }
 
 
-    public ResponseEntity<String> authenticate(LoginRequest loginRequest) {
+    public String authenticate(LoginRequest loginRequest) {
         try {
             Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
@@ -104,8 +104,8 @@ public class UserService {
                         .orElseThrow(() -> new BadCredentialsException("User not found"));
 
                 Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
-                String jwtToken = jwtService.createToken(user.getId().toString(), authorities); // Use UUID as string
-                return ResponseEntity.ok(jwtToken);
+                // Use UUID as string
+                return jwtService.createToken(user.getId().toString(), authorities);
             } else {
                 throw new BadCredentialsException("Invalid username or password");
             }
@@ -114,7 +114,7 @@ public class UserService {
         }
     }
 
-    public ResponseEntity<String> register(SignupRequest signupRequest) {
+    public String register(SignupRequest signupRequest) {
         try {
             UserInfo user = mapper.singupRequestDtoToUserInfo(signupRequest);
             user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));

@@ -34,15 +34,26 @@ public class UserController {
     }
 
     @PostMapping("/auth/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
-        return userService.authenticate(loginRequest);
+    public ResponseEntity<BaseResponse<String, String>> login(@RequestBody LoginRequest loginRequest){
+        try {
+            String token = userService.authenticate(loginRequest);
+            return BaseResponse.success("Login successful", token);
+        } catch (Exception e) {
+            return BaseResponse.error("Login failed: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
     }
 
     @PostMapping("/auth/signup")
-    public ResponseEntity<?> signup(@Valid @RequestBody SignupRequest signupRequest){
-
-        System.out.println(signupRequest);
-        return userService.register(signupRequest);
+    public ResponseEntity<BaseResponse<String, String>> signup(@Valid @RequestBody SignupRequest signupRequest){
+        try {
+            System.out.println(signupRequest);
+            String result = userService.register(signupRequest);
+            return BaseResponse.success("Registration successful", result);
+        } catch (Exception e) {
+            return BaseResponse.error("Registration error: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
     }
 
     @PostMapping("/auth/change-password")
