@@ -31,6 +31,10 @@ public class Post {
     @Column(name = "poster_id",nullable = false,updatable = false)
     private UUID posterId;
 
+    private String contactNumber;
+    private String title;
+
+
     @Column(name = "type", nullable = false)
     @Enumerated(EnumType.STRING)
     private PostType postType;

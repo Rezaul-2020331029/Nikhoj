@@ -12,6 +12,8 @@ import reza.monolithicbackend.POST.domains.dtos.response.BaseResponse;
 import reza.monolithicbackend.POST.domains.entities.Threads;
 import reza.monolithicbackend.POST.services.ThreadService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/guest")
 public class OpenThreadsController {
@@ -34,13 +36,13 @@ public class OpenThreadsController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<BaseResponse<Page<Threads>, String>> getAllThreads(
+    public ResponseEntity<BaseResponse<List<Threads>, String>> getAllThreads(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
         try {
             Pageable pageable = PageRequest.of(page, size);
             Page<Threads> threads = threadService.getThreadsSortedByCreation(pageable);
-            return BaseResponse.success("Threads retrieved successfully", threads);
+            return BaseResponse.success("Threads retrieved successfully", threads.getContent());
         } catch (Exception e) {
             return BaseResponse.badRequest("Failed to retrieve threads: " + e.getMessage(), null);
         }

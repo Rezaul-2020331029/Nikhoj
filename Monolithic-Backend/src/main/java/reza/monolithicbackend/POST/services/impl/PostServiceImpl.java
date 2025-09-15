@@ -13,7 +13,7 @@ import reza.monolithicbackend.POST.repos.PostRepo;
 import reza.monolithicbackend.POST.repos.PostSpecRepo;
 import reza.monolithicbackend.POST.repos.ThreadRepo;
 import reza.monolithicbackend.POST.services.PostService;
-
+import org.springframework.data.jpa.domain.Specification;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
@@ -60,6 +60,10 @@ public class PostServiceImpl implements PostService {
         post.setPostOffice(request.getPostOffice());
         post.setRoadAddress(request.getRoadAddress());
         post.setCategory(request.getCategory());
+
+        if (request.getContactNumber() != null) {
+            post.setContactNumber(request.getContactNumber());
+        }
 
         // Set thread if provided
         if (request.getThreadId() != null && !request.getThreadId().isEmpty()) {
@@ -151,14 +155,41 @@ public class PostServiceImpl implements PostService {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
 
-        return postRepo.findAllByCategoryAndDistrictAndPostTypeAndDateAndThreads_ThreadId(
-                filter.getCategory(),
-                filter.getDistrict(),
-                PostType.valueOf(filter.getType().toUpperCase()),
-                targetDate,
-                filter.getThreadId(),
-                pageable
+        org.springframework.data.jpa.domain.Specification<Post> spec = Specification.where(null);
+
+        // Always filter by date (required)
+        spec = spec.and((root, query, criteriaBuilder) ->
+                criteriaBuilder.equal(
+                        criteriaBuilder.function("DATE", LocalDate.class, root.get("created")),
+                        targetDate
+                )
         );
+
+        // Always filter by type (required)
+        spec = spec.and((root, query, criteriaBuilder) ->
+                criteriaBuilder.equal(root.get("postType"), PostType.valueOf(filter.getType().toUpperCase()))
+        );
+
+        // Optional filters
+        if (filter.getCategory() != null && !filter.getCategory().trim().isEmpty()) {
+            spec = spec.and((root, query, criteriaBuilder) ->
+                    criteriaBuilder.equal(root.get("category"), filter.getCategory())
+            );
+        }
+
+        if (filter.getDistrict() != null && !filter.getDistrict().trim().isEmpty()) {
+            spec = spec.and((root, query, criteriaBuilder) ->
+                    criteriaBuilder.equal(root.get("district"), filter.getDistrict())
+            );
+        }
+
+        if (filter.getThreadId() != null) {
+            spec = spec.and((root, query, criteriaBuilder) ->
+                    criteriaBuilder.equal(root.get("threads").get("threadId"), filter.getThreadId())
+            );
+        }
+
+        return postRepo.findAll(spec, pageable);
     }
 
 

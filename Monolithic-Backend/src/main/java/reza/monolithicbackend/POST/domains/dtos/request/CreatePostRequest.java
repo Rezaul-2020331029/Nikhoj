@@ -13,6 +13,7 @@ public class CreatePostRequest {
     private String category;
     private String postType;
     private String threadId;
+    private String contactNumber;
     private List<String> files; // Changed to List<String> for Base64
     private Map<String, String> postSpecs;
     private String district;
