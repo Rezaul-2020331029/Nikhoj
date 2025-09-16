@@ -94,5 +94,10 @@ public class ThreadServiceImpl implements ThreadService {
         return postRepository.findDistinctThreadsByPosterId(userId);
     }
 
+    @Override
+    public List<Threads> getAllThreads() {
+        return (List<Threads>) threadRepository.findAll();
+    }
+
 
 }

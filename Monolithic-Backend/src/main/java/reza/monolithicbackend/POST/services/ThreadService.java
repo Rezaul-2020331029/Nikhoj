@@ -20,4 +20,6 @@ public interface ThreadService {
     Page<Threads> searchThreads(SearchThreadReq searchReq);
     List<Threads> getThreadsByUserId(UUID userId);
 
+    List<Threads> getAllThreads();
+
 }
