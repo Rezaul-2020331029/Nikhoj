@@ -30,13 +30,13 @@ public class CategoryController {
     public ResponseEntity<BaseResponse> createCategory(@RequestBody CreateCategoryReq req) {
 
         try {
-            UUID id = authenticationService.getCurrentUserId();
+
 
             categoryService.createCategory(
                     req.getName(),
                     req.getSpecNames(),
                     req.getDescription(),
-                    id
+                    UUID.randomUUID()
             );
 
             BaseResponse response = BaseResponse.builder()

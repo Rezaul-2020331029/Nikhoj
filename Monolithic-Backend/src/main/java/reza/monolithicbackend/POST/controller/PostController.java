@@ -20,6 +20,7 @@ import reza.monolithicbackend.qdrant.QdrantService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -64,7 +65,10 @@ public class PostController {
             // Create post with the uploaded image URLs
             Post createdPost = postService.createPost(request, imageUrls);
 
-            deepFaceService.recieveFaceFiles(createdPost.getPostId(), request.getFiles());
+            System.out.println("created post");
+
+            if (Objects.equals(request.getCategory(), "Human"))
+                deepFaceService.recieveFaceFiles(createdPost.getPostId(), request.getFiles());
             return BaseResponse.created("Post created successfully", createdPost);
         } catch (Exception e) {
             return BaseResponse.badRequest("Failed to create post: " + e.getMessage(), null);

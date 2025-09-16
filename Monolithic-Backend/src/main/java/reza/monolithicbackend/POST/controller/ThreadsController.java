@@ -4,6 +4,7 @@ package reza.monolithicbackend.POST.controller;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reza.monolithicbackend.Auth.service.AuthenticationService;
@@ -29,7 +30,7 @@ public class ThreadsController {
 
 
     @PostMapping("/create")
-    public ResponseEntity<BaseResponse> createThread(@RequestBody CreateThreadRequest createThreadRequest) {
+    public ResponseEntity<BaseResponse<Threads,String>> createThread(@RequestBody CreateThreadRequest createThreadRequest) {
         try {
             UUID userId = authenticationService.getCurrentUserId();
 
@@ -40,18 +41,23 @@ public class ThreadsController {
                     userId
             );
 
-            return ResponseEntity.ok(BaseResponse.builder()
-                    .statusCode(String.valueOf(201))
-                    .status("SUCCESS")
-                    .message("Thread created successfully")
-                    .build());
+//            return ResponseEntity.ok(BaseResponse.builder()
+//                    .statusCode(String.valueOf(201))
+//                    .status("SUCCESS")
+//                    .message("Thread created successfully")
+//                    .build());
+
+            return BaseResponse.success("Thread created successfully", threads);
 
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body(BaseResponse.builder()
-                    .statusCode(String.valueOf(500))
-                    .status("ERROR")
-                    .message("Failed to create thread: " + e.getMessage())
-                    .build());
+//            return ResponseEntity.internalServerError().body(BaseResponse.builder()
+//                    .statusCode(String.valueOf(500))
+//                    .status("ERROR")
+//                    .message("Failed to create thread: " + e.getMessage())
+//                    .build());
+
+
+            return BaseResponse.error("Failed to Create Thread", HttpStatus.INTERNAL_SERVER_ERROR,List.of(e.getMessage()));
         }
 
     }

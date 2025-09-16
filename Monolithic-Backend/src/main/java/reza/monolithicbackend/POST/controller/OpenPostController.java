@@ -80,12 +80,12 @@ public class OpenPostController {
 
 
     @PostMapping ("postsByType")
-    public ResponseEntity<BaseResponse<List<Post>, String>> postsByType(@RequestBody GetPostsByPostTypeReq request) {
+    public ResponseEntity<BaseResponse<Page<Post>, Object>> postsByType(@RequestBody GetPostsByPostTypeReq request) {
         try {
             Pageable pageable = PageRequest.of(request.getPage(), request.getLimit(), Sort.by(Sort.Direction.DESC, "created"));
             PostType postType = PostType.valueOf(request.getPostType().toUpperCase());
             Page<Post> postPage = postService.getPostsByPostType(postType, pageable);
-            return BaseResponse.success("Posts retrieved successfully", postPage.getContent());
+            return BaseResponse.success("Posts retrieved successfully", postPage);
         } catch (RuntimeException e) {
             return BaseResponse.badRequest("Failed to retrieve posts: " + e.getMessage(), null);
         } catch (Exception e) {
@@ -94,12 +94,12 @@ public class OpenPostController {
     }
 
     @GetMapping("postByCategory/")
-    public ResponseEntity<BaseResponse<List<Post>, String>> getPostByCategory(@RequestBody GetPostsByCategoryReq request) {
+    public ResponseEntity<BaseResponse<Page<Post>, Object>> getPostByCategory(@RequestBody GetPostsByCategoryReq request) {
 
         try {
             Pageable pageable = PageRequest.of(request.getPage(), request.getLimit(), Sort.by(Sort.Direction.DESC, "created"));
             Page<Post> postPage = postService.getPostsByCategory(request.getCategory(), pageable);
-            return BaseResponse.success("Posts retrieved successfully", postPage.getContent());
+            return BaseResponse.success("Posts retrieved successfully", postPage);
         } catch (RuntimeException e) {
             return BaseResponse.badRequest("Invalid request: " + e.getMessage(), null);
         } catch (Exception e) {
@@ -132,14 +132,14 @@ public class OpenPostController {
         }
     }
 
-    @GetMapping("/filter")
-    public ResponseEntity<BaseResponse<List<Post>, String>> getPostsByFilter(
+    @PostMapping("/filter")
+    public ResponseEntity<BaseResponse<Page<Post>, Object>> getPostsByFilter(
             @RequestBody GetPostsByFilterReq request
     ) {
         try {
             Pageable pageable = PageRequest.of(request.getPage(), request.getLimit(), Sort.by(Sort.Direction.DESC, "created"));
             Page<Post> postPage = postService.getPostsByFilter(request, pageable);
-            return BaseResponse.success("Posts retrieved successfully", postPage.getContent());
+            return BaseResponse.success("Posts retrieved successfully", postPage);
         } catch (RuntimeException e) {
             return BaseResponse.badRequest("Failed to retrieve posts: " + e.getMessage(), null);
         } catch (Exception e) {

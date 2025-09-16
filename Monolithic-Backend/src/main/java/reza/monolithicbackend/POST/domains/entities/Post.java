@@ -32,6 +32,8 @@ public class Post {
     private UUID posterId;
 
     private String contactNumber;
+
+    @Column(name = "post_title", nullable = false,length = 1024)
     private String title;
 
 
@@ -39,8 +41,6 @@ public class Post {
     @Enumerated(EnumType.STRING)
     private PostType postType;
 
-    @Column(name = "post_title", nullable = false,length = 1024)
-    private String postTiltle;
 
     @Column(name = "description", nullable = false,length = 8000)
     private String description;

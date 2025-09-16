@@ -49,7 +49,7 @@ public class PostServiceImpl implements PostService {
         // Create and save the post entity first
         Post post = new Post();
         post.setPosterId(posterId);
-        post.setPostTiltle(request.getTitle());
+        post.setTitle(request.getTitle());
         post.setDescription(request.getDescription());
         post.setPostType(PostType.valueOf(request.getPostType().toUpperCase()));
 
