@@ -148,4 +148,20 @@ public class OpenPostController {
     }
 
 
+    @PostMapping("/search")
+    public ResponseEntity<BaseResponse<Page<Post>, Object>> searchPost(
+            @RequestBody SearchPost request
+    ) {
+        try {
+            Pageable pageable = PageRequest.of(request.getPage(), request.getLimit(), Sort.by(Sort.Direction.DESC, "created"));
+            Page<Post> postPage = postService.searchPosts(request.getSearch(),request.getType(), pageable);
+            return BaseResponse.success("Posts retrieved successfully", postPage);
+        } catch (RuntimeException e) {
+            return BaseResponse.badRequest("Failed to retrieve posts: " + e.getMessage(), null);
+        } catch (Exception e) {
+            return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+
 }

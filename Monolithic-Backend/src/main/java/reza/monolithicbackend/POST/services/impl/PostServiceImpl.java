@@ -192,5 +192,34 @@ public class PostServiceImpl implements PostService {
         return postRepo.findAll(spec, pageable);
     }
 
+    @Override
+    public Page<Post> searchPosts(String search, String type, Pageable pageable) {
+        org.springframework.data.jpa.domain.Specification<Post> spec = Specification.where(null);
+
+        if (search != null && !search.trim().isEmpty()) {
+            String keyword = "%" + search.trim().toLowerCase() + "%";
+            spec = spec.and((root, query, cb) -> cb.or(
+                    cb.like(cb.lower(root.get("title")), keyword),
+                    cb.like(cb.lower(root.get("description")), keyword),
+                    cb.like(cb.lower(root.get("category")), keyword),
+                    cb.like(cb.lower(root.get("district")), keyword),
+                    cb.like(cb.lower(root.get("city")), keyword),
+                    cb.like(cb.lower(root.get("subDistrict")), keyword),
+                    cb.like(cb.lower(root.get("postOffice")), keyword),
+                    cb.like(cb.lower(root.get("roadAddress")), keyword),
+                    cb.like(cb.lower(root.get("address")), keyword),
+                    cb.like(cb.lower(root.get("contactNumber")), keyword)
+            ));
+        }
+
+        if (type != null && !type.trim().isEmpty()) {
+            spec = spec.and((root, query, cb) ->
+                    cb.equal(root.get("postType"), PostType.valueOf(type.trim().toUpperCase()))
+            );
+        }
+
+        return postRepo.findAll(spec, pageable);
+    }
+
 
 }

@@ -25,6 +25,9 @@ public interface PostService {
 
     Page<Post> getPostsByFilter(GetPostsByFilterReq filter, Pageable pageable);
 
+    Page<Post> searchPosts(String search,String type, Pageable pageable);
+
+
 
 
 
