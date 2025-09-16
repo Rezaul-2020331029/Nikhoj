@@ -5,8 +5,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import reza.monolithicbackend.Auth.service.AuthenticationService;
+import reza.monolithicbackend.POST.domains.dtos.request.ChangePostStatusReq;
 import reza.monolithicbackend.POST.domains.dtos.request.CreatePostRequest;
 import reza.monolithicbackend.POST.domains.dtos.request.GetPostsByFilterReq;
+import reza.monolithicbackend.POST.domains.dtos.request.UpdatePostReq;
 import reza.monolithicbackend.POST.domains.entities.*;
 import reza.monolithicbackend.POST.repos.ImageUrlRepo;
 import reza.monolithicbackend.POST.repos.PostRepo;
@@ -219,6 +221,64 @@ public class PostServiceImpl implements PostService {
         }
 
         return postRepo.findAll(spec, pageable);
+    }
+
+    @Override
+    public Post updatePostStatus(ChangePostStatusReq req) {
+        UUID posterId = authenticationService.getCurrentUserId();
+
+        // Fetch the post
+        Post post = postRepo.findById(req.getPostId())
+                .orElseThrow(() -> new RuntimeException("Post not found with ID: " + req.getPostId()));
+
+        // Check if the current user is the owner
+        if (!post.getPosterId().equals(posterId)) {
+            throw new RuntimeException("You are not authorized to update this post's status.");
+        }
+
+        // Update the status
+        post.setStatus(req.getPostStatus());
+
+        // Save and return the updated post
+        return postRepo.save(post);
+    }
+
+    @Override
+    public Post updatePost(UpdatePostReq req) {
+        UUID posterId = authenticationService.getCurrentUserId();
+
+        // Fetch the post
+        Post post = postRepo.findById(req.getPostId())
+                .orElseThrow(() -> new RuntimeException("Post not found with ID: " + req.getPostId()));
+
+        // Check if the current user is the owner
+        if (!post.getPosterId().equals(posterId)) {
+            throw new RuntimeException("You are not authorized to update this post.");
+        }
+
+        // Update fields if present in the request
+        if (req.getTitle() != null) post.setTitle(req.getTitle());
+        if (req.getDescription() != null) post.setDescription(req.getDescription());
+        if (req.getCategory() != null) post.setCategory(req.getCategory());
+        if (req.getDistrict() != null) post.setDistrict(req.getDistrict());
+        if (req.getCity() != null) post.setCity(req.getCity());
+        if (req.getSubDistrict() != null) post.setSubDistrict(req.getSubDistrict());
+        if (req.getPostOffice() != null) post.setPostOffice(req.getPostOffice());
+        if (req.getRoadAddress() != null) post.setRoadAddress(req.getRoadAddress());
+        if (req.getContactNumber() != null) post.setContactNumber(req.getContactNumber());
+
+        // Update only the values of existing postSpecs
+        if (req.getPostSpecs() != null && post.getPostSpecs() != null) {
+            for (PostSpec spec : post.getPostSpecs()) {
+                if (req.getPostSpecs().containsKey(spec.getName())) {
+                    spec.setValue(req.getPostSpecs().get(spec.getName()));
+                    postSpecRepo.save(spec);
+                }
+            }
+        }
+
+        // Save and return the updated post
+        return postRepo.save(post);
     }
 
 

@@ -104,6 +104,34 @@ public class PostController {
     }
 
 
+    @PostMapping("/change-status")
+    public ResponseEntity<BaseResponse<Post, String>> changePostStatus(
+            @RequestBody ChangePostStatusReq req
+    ) {
+        try {
+            Post updatedPost = postService.updatePostStatus(req);
+            return BaseResponse.success("Post status updated successfully", updatedPost);
+        } catch (RuntimeException e) {
+            return BaseResponse.badRequest("Failed to update post status: " + e.getMessage(), null);
+        } catch (Exception e) {
+            return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<BaseResponse<Post, String>> updatePost(
+            @RequestBody UpdatePostReq req
+    ) {
+        try {
+            Post updatedPost = postService.updatePost(req);
+            return BaseResponse.success("Post updated successfully", updatedPost);
+        } catch (RuntimeException e) {
+            return BaseResponse.badRequest("Failed to update post: " + e.getMessage(), null);
+        } catch (Exception e) {
+            return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
 
 
 
