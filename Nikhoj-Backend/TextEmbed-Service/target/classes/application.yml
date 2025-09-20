@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: TextEmbed-Service
+
+#ollama:
+#  base-url: http://localhost:11434
+#  connection-timeout: 30000
+#  read-timeout: 60000
+
+qdrant:
+  url: 89efdb99-52b6-44f7-b24b-2e99ab1b22ec.us-west-2-0.aws.cloud.qdrant.io
+  key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.gl_JJrBYTUh2fwQyoPmauMiqRRrfU4huhidKo0qKRfs
+
+server:
+  port: 7050
+

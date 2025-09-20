@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="14f32bbe-2d47-4da5-a98c-f51d458cfc1f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Monolithic-Backend/src/main/java/reza/monolithicbackend/Auth/config/WebMVCConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Monolithic-Backend/src/main/java/reza/monolithicbackend/Auth/config/WebMVCConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Monolithic-Backend/src/main/java/reza/monolithicbackend/Auth/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Monolithic-Backend/src/main/java/reza/monolithicbackend/Auth/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Monolithic-Backend/src/main/java/reza/monolithicbackend/Auth/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Monolithic-Backend/src/main/java/reza/monolithicbackend/Auth/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Monolithic-Backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Monolithic-Backend/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+        <option value="Record" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="30b55xr2zquFWh2SCvcln5bqQ72" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.ImageEmbedding-Service/compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.TextEmbed-Service/compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.TextEmbedding-Service/compose.yaml.text-embeddings-inference: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.TextEmbedding-Service/compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in generated-requests.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #3.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #6.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Auth-Service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Auth-Service [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Auth-Service [org.apache.maven.plugins:maven-clean-plugin:3.4.1:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Auth-Service [verify].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ConfigServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DiscoveryServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ImageEmbeddingServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.PostServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TextEmbedServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TextEmbeddingServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Dev/Nikhoj/Nikhoj-Backend/TextEmbed-Service&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.testRunning&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Dev\Nikhoj\Nikhoj-Backend\TextEmbed-Service" />
+      <recent name="F:\Dev\Nikhoj\Nikhoj-Backend\TextEmbed-Service\src\main\resources\tessdata" />
+      <recent name="F:\Dev\Nikhoj\Nikhoj-Backend\TextEmbed-Service\src\main\resources" />
+      <recent name="F:\Dev\Nikhoj\Nikhoj-Backend\TextEmbedding-Service\src\main\resources" />
+      <recent name="F:\Dev\Nikhoj\Nikhoj-Backend\Post-Service\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Dev\Nikhoj\Nikhoj-Backend\TextEmbedding-Service\src\main\resources\tessdata" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="reza.textembedservice.qdrant" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="All in generated-requests" value="STOPPED" />
+              <entry key="generated-requests | #1" value="STOPPED" />
+              <entry key="generated-requests | #2" value="STOPPED" />
+              <entry key="generated-requests | #3" value="STOPPED" />
+              <entry key="generated-requests | #6" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="AuthServiceApplication" value="STOPPED" />
+              <entry key="ConfigServiceApplication" value="STOPPED" />
+              <entry key="DiscoveryServiceApplication" value="STOPPED" />
+              <entry key="GatewayServiceApplication" value="STOPPED" />
+              <entry key="PostServiceApplication" value="STOPPED" />
+              <entry key="TextEmbedServiceApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.TextEmbedServiceApplication">
+    <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#2" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#3" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#6" index="6" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Auth-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.authservice.AuthServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthenticationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Authentication-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.authenticationservice.AuthenticationServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Config-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.configservice.ConfigServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiscoveryServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Discovery-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.discoveryservice.DiscoveryServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Gateway-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.gatewayservice.GatewayServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageEmbeddingServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="ImageEmbedding-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.imageembeddingservice.ImageEmbeddingServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Post-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.postservice.PostServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TextEmbedServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="TextEmbed-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.textembedservice.TextEmbedServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TextEmbeddingServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="TextEmbedding-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.textembeddingservice.TextEmbeddingServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="User-Service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="reza.userservice.UserServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="HTTP Request.All in generated-requests" />
+      <item itemvalue="HTTP Request.generated-requests | #1" />
+      <item itemvalue="HTTP Request.generated-requests | #2" />
+      <item itemvalue="HTTP Request.generated-requests | #3" />
+      <item itemvalue="HTTP Request.generated-requests | #6" />
+      <item itemvalue="Spring Boot.TextEmbedServiceApplication" />
+      <item itemvalue="Spring Boot.AuthServiceApplication" />
+      <item itemvalue="Spring Boot.AuthenticationServiceApplication" />
+      <item itemvalue="Spring Boot.ConfigServiceApplication" />
+      <item itemvalue="Spring Boot.DiscoveryServiceApplication" />
+      <item itemvalue="Spring Boot.GatewayServiceApplication" />
+      <item itemvalue="Spring Boot.ImageEmbeddingServiceApplication" />
+      <item itemvalue="Spring Boot.PostServiceApplication" />
+      <item itemvalue="Spring Boot.TextEmbeddingServiceApplication" />
+      <item itemvalue="Spring Boot.UserServiceApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.All in generated-requests" />
+        <item itemvalue="HTTP Request.generated-requests | #6" />
+        <item itemvalue="HTTP Request.generated-requests | #3" />
+        <item itemvalue="HTTP Request.generated-requests | #2" />
+        <item itemvalue="HTTP Request.generated-requests | #1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="14f32bbe-2d47-4da5-a98c-f51d458cfc1f" name="Changes" comment="" />
+      <created>1753883255097</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1753883255097</updated>
+      <workItem from="1753883256429" duration="1387000" />
+      <workItem from="1753884655632" duration="2765000" />
+      <workItem from="1753948085282" duration="4364000" />
+      <workItem from="1753954274063" duration="10448000" />
+      <workItem from="1753971734450" duration="5412000" />
+      <workItem from="1753978140362" duration="3284000" />
+      <workItem from="1754061682461" duration="9514000" />
+      <workItem from="1754117055142" duration="13420000" />
+      <workItem from="1754141486625" duration="9856000" />
+      <workItem from="1754216602333" duration="6195000" />
+      <workItem from="1754648656810" duration="24000" />
+      <workItem from="1754660775124" duration="5210000" />
+      <workItem from="1754730316618" duration="804000" />
+      <workItem from="1754738162766" duration="2214000" />
+      <workItem from="1754745385086" duration="2262000" />
+      <workItem from="1754747667697" duration="16395000" />
+      <workItem from="1755173082715" duration="12323000" />
+      <workItem from="1755187760994" duration="20000" />
+      <workItem from="1755187790189" duration="26000" />
+      <workItem from="1755187824930" duration="4934000" />
+      <workItem from="1755197848661" duration="552000" />
+      <workItem from="1755198898833" duration="1000" />
+      <workItem from="1755254946978" duration="964000" />
+      <workItem from="1755261776617" duration="572000" />
+      <workItem from="1755266757427" duration="2041000" />
+      <workItem from="1755275041360" duration="2198000" />
+      <workItem from="1755277398661" duration="174000" />
+      <workItem from="1755277589758" duration="952000" />
+      <workItem from="1755279340197" duration="2970000" />
+      <workItem from="1755284821525" duration="1331000" />
+      <workItem from="1755289109495" duration="695000" />
+      <workItem from="1755333048062" duration="1583000" />
+      <workItem from="1755334769466" duration="688000" />
+      <workItem from="1755349331568" duration="1451000" />
+      <workItem from="1755354135290" duration="384000" />
+      <workItem from="1755436474373" duration="10351000" />
+      <workItem from="1755524378646" duration="461000" />
+      <workItem from="1755531191527" duration="822000" />
+      <workItem from="1755608057662" duration="7554000" />
+      <workItem from="1755944774688" duration="2799000" />
+      <workItem from="1755947614563" duration="403000" />
+      <workItem from="1755948027962" duration="1971000" />
+      <workItem from="1755950284484" duration="3050000" />
+      <workItem from="1756127570895" duration="17442000" />
+      <workItem from="1756156447517" duration="112000" />
+      <workItem from="1756455680887" duration="595000" />
+      <workItem from="1756670965794" duration="744000" />
+      <workItem from="1757071895623" duration="3011000" />
+      <workItem from="1757168507101" duration="3633000" />
+      <workItem from="1757176336700" duration="1039000" />
+      <workItem from="1757178728648" duration="597000" />
+      <workItem from="1757181522499" duration="839000" />
+      <workItem from="1757191445854" duration="236000" />
+      <workItem from="1757423098062" duration="3929000" />
+      <workItem from="1757435208436" duration="597000" />
+      <workItem from="1757446013288" duration="587000" />
+      <workItem from="1757488040211" duration="589000" />
+      <workItem from="1757500829695" duration="644000" />
+      <workItem from="1757594657215" duration="38000" />
+      <workItem from="1757701660654" duration="1014000" />
+      <workItem from="1757705050311" duration="586000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
