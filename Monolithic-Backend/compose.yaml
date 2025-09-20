@@ -18,18 +18,18 @@ services:
     volumes:
       - deepface-weights:/root/.deepface/weights
 
-#  # Optional: Add other services like Qdrant
-#  qdrant:
-#    image: qdrant/qdrant:latest
-#    container_name: qdrant-service
-#    ports:
-#      - "6333:6333"
-#      - "6334:6334"
-#    networks:
-#      - app-networ
-#    volumes:
-#      - qdrant-data:/qdrant/storage
-#    restart: unless-stopped
+  monolithic-backend:
+    image: monolithic-backend-app
+    container_name: monolithic-backend-service
+    ports:
+      - "7000:7000"
+    networks:
+      - app-network
+    depends_on:
+      - deepface2
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
 
 networks:
   app-network:

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.UUID;
 
 import lombok.Data;
+import reza.monolithicbackend.POST.domains.entities.Report;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -18,7 +20,7 @@ public class PostDTO {
     private String title;
     private String postType; // "LOST" or "FOUND"
     private String description;
-    private List<Object> reports; // Use appropriate ReportDTO if available
+    private List<Report> reports; // Use appropriate ReportDTO if available
     private List<ImageUrlDTO> imageUrls;
     private List<PostSpecDTO> postSpecs;
     private String category;

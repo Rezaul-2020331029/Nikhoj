@@ -455,6 +455,7 @@ public class PostServiceImpl implements PostService {
             dto.setCreated(post.getCreated());
             dto.setUpdated(post.getUpdated());
             dto.setStatus(post.getStatus().name());
+            dto.setReports(post.getReports());
 
             // Map postSpecs
             if (post.getPostSpecs() != null) {
@@ -462,6 +463,7 @@ public class PostServiceImpl implements PostService {
                     PostSpecDTO psDto = new PostSpecDTO();
                     psDto.setName(ps.getName());
                     psDto.setValue(ps.getValue());
+                    psDto.setId(ps.getId());
                     return psDto;
                 }).toList());
             }
