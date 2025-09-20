@@ -239,7 +239,7 @@ function Footer() {
 
 	return (
 		<div className="flex border-t border-slate-200 bg-slate-50/50">
-			{!isCreator ?
+			{isCreator ?
 				<AppButton
 					onClick={(e) => {
 						e.stopPropagation();
@@ -269,7 +269,7 @@ function Footer() {
 							variant="destructive"
 							className="flex-1 rounded-none border-0 bg-transparent hover:bg-red-50 text-red-600 font-medium py-3"
 						>
-							{rightContent}
+							{leftContent}
 						</AppButton>
 					}
 					closeDialog={<AppButton>Okay</AppButton>}
