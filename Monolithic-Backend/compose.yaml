@@ -1,0 +1,39 @@
+services:
+  deepface2:
+    image: serengil/deepface
+    container_name: deepface-service2
+    ports:
+      - "6500:5000"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6500"]
+      interval: 30s
+      timeout: 6000s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - deepface-weights:/root/.deepface/weights
+
+  monolithic-backend:
+    image: monolithic-backend-app
+    container_name: monolithic-backend-service
+    ports:
+      - "7000:7000"
+    networks:
+      - app-network
+    depends_on:
+      - deepface2
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  deepface-weights:
