@@ -62,7 +62,7 @@ public class OpenThreadsController {
         }
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<BaseResponse<List<GetAllThreadResposne>, Object>> getAllThreads() {
         try {
             List<Threads> threads = threadService.getAllThreads();

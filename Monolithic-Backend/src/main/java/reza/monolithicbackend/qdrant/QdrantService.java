@@ -140,7 +140,7 @@ public class QdrantService {
                             .queryAsync(Points.QueryPoints.newBuilder()
                             .setCollectionName(collectionName)
                             .setQuery(nearest(UUID.fromString(id)))
-                            .setLimit(limit)
+                            .setLimit(5)
                             .build()
                     );
 

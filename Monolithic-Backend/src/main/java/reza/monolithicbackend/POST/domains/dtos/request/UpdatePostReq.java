@@ -29,7 +29,6 @@ public class UpdatePostReq {
     private String subDistrict;
     private String postOffice;
     private  String roadAddress;
-    private String address;
 
     @Enumerated(EnumType.STRING)
     private PostStatus status = PostStatus.ONGOING;

@@ -2,10 +2,8 @@ package reza.monolithicbackend.POST.services;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import reza.monolithicbackend.POST.domains.dtos.request.ChangePostStatusReq;
-import reza.monolithicbackend.POST.domains.dtos.request.CreatePostRequest;
-import reza.monolithicbackend.POST.domains.dtos.request.GetPostsByFilterReq;
-import reza.monolithicbackend.POST.domains.dtos.request.UpdatePostReq;
+import reza.monolithicbackend.POST.domains.dtos.advance.PostDTO;
+import reza.monolithicbackend.POST.domains.dtos.request.*;
 import reza.monolithicbackend.POST.domains.entities.Post;
 import reza.monolithicbackend.POST.domains.entities.PostStatus;
 import reza.monolithicbackend.POST.domains.entities.PostType;
@@ -33,6 +31,11 @@ public interface PostService {
     Post updatePostStatus(ChangePostStatusReq req);
 
     Post updatePost(UpdatePostReq req);
+
+    void deletePost(UUID postId);
+
+    Page<PostDTO> advanceSearch(AdvanceSearchReq req, Pageable pageable);
+
 
 
 

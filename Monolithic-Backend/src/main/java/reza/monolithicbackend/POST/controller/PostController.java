@@ -8,13 +8,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import reza.monolithicbackend.FaceEmbedding.services.DeepFaceService;
 import reza.monolithicbackend.POST.config.FireBaseService;
 import reza.monolithicbackend.POST.domains.dtos.request.*;
 import reza.monolithicbackend.POST.domains.dtos.response.BaseResponse;
 import reza.monolithicbackend.POST.domains.entities.Post;
-import reza.monolithicbackend.POST.domains.entities.PostType;
 import reza.monolithicbackend.POST.services.PostService;
 import reza.monolithicbackend.qdrant.QdrantService;
 
@@ -22,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 
 @RestController
@@ -77,31 +74,7 @@ public class PostController {
 
 
 
-    @GetMapping("/face-search/{postId}")
-    public ResponseEntity<BaseResponse<List<String>, String>> getFaceSearch(@PathVariable UUID postId) {
-        try {
-            System.out.println("Searching for postId: " + postId.toString());
 
-            List<String> rawPostIds = qdrantService.search("Facenet512", postId.toString(), 100);
-
-            // Clean up the UUID format - extract just the UUID value
-            List<String> cleanPostIds = rawPostIds.stream()
-                    .map(id -> id.replaceAll("uuid: \"", "").replaceAll("\"\\s*", ""))
-                    .collect(Collectors.toList());
-
-            System.out.println("Search results count: " + cleanPostIds.size());
-            System.out.println("Cleaned search results: " + cleanPostIds);
-
-            return BaseResponse.success("Face search completed successfully", cleanPostIds);
-
-        } catch (RuntimeException e) {
-            System.out.println("RuntimeException: " + e.getMessage());
-            return BaseResponse.badRequest("Failed to perform face search: " + e.getMessage(), null);
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
-            return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, null);
-        }
-    }
 
 
     @PostMapping("/change-status")
@@ -132,6 +105,19 @@ public class PostController {
         }
     }
 
+    @DeleteMapping("/delete/{postId}")
+    public ResponseEntity<BaseResponse<String,String>> deletePost(
+            @PathVariable UUID postId
+    ) {
+        try {
+            postService.deletePost(postId);
+            return BaseResponse.success("Post deleted successfully", null);
+        } catch (RuntimeException e) {
+            return BaseResponse.badRequest("Failed to delete post: " + e.getMessage(), null);
+        } catch (Exception e) {
+            return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
 
 
 

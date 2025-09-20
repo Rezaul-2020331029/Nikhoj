@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reza.monolithicbackend.FaceEmbedding.services.DeepFaceService;
 import reza.monolithicbackend.POST.config.FireBaseService;
+import reza.monolithicbackend.POST.domains.dtos.advance.PostDTO;
 import reza.monolithicbackend.POST.domains.dtos.request.*;
 import reza.monolithicbackend.POST.domains.dtos.response.BaseResponse;
 import reza.monolithicbackend.POST.domains.entities.Post;
@@ -19,6 +20,7 @@ import reza.monolithicbackend.qdrant.QdrantService;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/guest/post")
@@ -162,6 +164,48 @@ public class OpenPostController {
             return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, null);
         }
     }
+
+    @GetMapping("/face-search/{postId}")
+    public ResponseEntity<BaseResponse<List<Post>, String>> getFaceSearch(@PathVariable UUID postId) {
+        try {
+            System.out.println("Searching for postId: " + postId.toString());
+
+            List<String> rawPostIds = qdrantService.search("Facenet512", postId.toString(), 100);
+
+            // Clean up the UUID format and convert to UUID
+            List<UUID> cleanPostIds = rawPostIds.stream()
+                    .map(id -> id.replaceAll("uuid: \"", "").replaceAll("\"\\s*", ""))
+                    .map(UUID::fromString)
+                    .collect(Collectors.toList());
+
+            System.out.println("Search results count: " + cleanPostIds.size());
+            System.out.println("Cleaned search results: " + cleanPostIds);
+
+            return BaseResponse.success("Face search completed successfully", postService.getPostsByPostIds(cleanPostIds));
+
+        } catch (RuntimeException e) {
+            System.out.println("RuntimeException: " + e.getMessage());
+            return BaseResponse.badRequest("Failed to perform face search: " + e.getMessage(), null);
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+    @PostMapping("/advance-filter")
+    public ResponseEntity<BaseResponse<Page<PostDTO>, Object>> advanceSearch(@RequestBody AdvanceSearchReq request) {
+        try {
+            Pageable pageable = PageRequest.of(request.getPage(), request.getSize(), Sort.by("created").descending());
+            Page<PostDTO> result = postService.advanceSearch(request, pageable);
+            return BaseResponse.success("Success",result);
+        } catch (Exception e) {
+            return BaseResponse.error("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR, List.of(e.getMessage()));
+        }
+    }
+
+
+
+
 
 
 }

@@ -5,10 +5,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import reza.monolithicbackend.Auth.service.AuthenticationService;
-import reza.monolithicbackend.POST.domains.dtos.request.ChangePostStatusReq;
-import reza.monolithicbackend.POST.domains.dtos.request.CreatePostRequest;
-import reza.monolithicbackend.POST.domains.dtos.request.GetPostsByFilterReq;
-import reza.monolithicbackend.POST.domains.dtos.request.UpdatePostReq;
+import reza.monolithicbackend.POST.config.FireBaseService;
+import reza.monolithicbackend.POST.domains.dtos.advance.ImageUrlDTO;
+import reza.monolithicbackend.POST.domains.dtos.advance.PostDTO;
+import reza.monolithicbackend.POST.domains.dtos.advance.PostSpecDTO;
+import reza.monolithicbackend.POST.domains.dtos.request.*;
 import reza.monolithicbackend.POST.domains.entities.*;
 import reza.monolithicbackend.POST.repos.ImageUrlRepo;
 import reza.monolithicbackend.POST.repos.PostRepo;
@@ -29,15 +30,17 @@ public class PostServiceImpl implements PostService {
     private final AuthenticationService authenticationService;
     private final PostSpecRepo postSpecRepo;
     private final ImageUrlRepo imageUrlRepo;
+    FireBaseService firebaseService;
 
     @Autowired
     public PostServiceImpl(PostRepo postRepo, ThreadRepo threadRepo, AuthenticationService authenticationService,
-                           PostSpecRepo postSpecRepo, ImageUrlRepo imageUrlRepo) {
+                           PostSpecRepo postSpecRepo, ImageUrlRepo imageUrlRepo, FireBaseService firebaseService) {
         this.postRepo = postRepo;
         this.threadRepo = threadRepo;
         this.authenticationService = authenticationService;
         this.postSpecRepo = postSpecRepo;
         this.imageUrlRepo = imageUrlRepo;
+        this.firebaseService = firebaseService;
     }
 
     @Override
@@ -151,21 +154,21 @@ public class PostServiceImpl implements PostService {
         return postRepo.findAllByThreads_Title(threadTitle,pageable);
     }
 
-    @Override
     public Page<Post> getPostsByFilter(GetPostsByFilterReq filter, Pageable pageable) {
-        LocalDate targetDate = filter.getDate().toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
-
         org.springframework.data.jpa.domain.Specification<Post> spec = Specification.where(null);
 
-        // Always filter by date (required)
-        spec = spec.and((root, query, criteriaBuilder) ->
-                criteriaBuilder.equal(
-                        criteriaBuilder.function("DATE", LocalDate.class, root.get("created")),
-                        targetDate
-                )
-        );
+        // Optional date filter
+        if (filter.getDate() != null) {
+            LocalDate targetDate = filter.getDate().toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+            spec = spec.and((root, query, criteriaBuilder) ->
+                    criteriaBuilder.equal(
+                            criteriaBuilder.function("DATE", LocalDate.class, root.get("created")),
+                            targetDate
+                    )
+            );
+        }
 
         // Always filter by type (required)
         spec = spec.and((root, query, criteriaBuilder) ->
@@ -222,6 +225,53 @@ public class PostServiceImpl implements PostService {
 
         return postRepo.findAll(spec, pageable);
     }
+
+
+//    @Override
+//    public Page<Post> searchPosts(String search, String type, Pageable pageable) {
+//        Specification<Post> spec = Specification.where(null);
+//
+//        if (search != null && !search.trim().isEmpty()) {
+//            String keyword = "%" + search.trim().toLowerCase() + "%";
+//            spec = spec.and((root, query, cb) -> cb.or(
+//                    cb.like(cb.lower(root.get("title")), keyword),
+//                    cb.like(cb.lower(root.get("description")), keyword),
+//                    cb.like(cb.lower(root.get("category")), keyword),
+//                    cb.like(cb.lower(root.get("district")), keyword),
+//                    cb.like(cb.lower(root.get("city")), keyword),
+//                    cb.like(cb.lower(root.get("subDistrict")), keyword),
+//                    cb.like(cb.lower(root.get("postOffice")), keyword),
+//                    cb.like(cb.lower(root.get("roadAddress")), keyword),
+//                    cb.like(cb.lower(root.get("address")), keyword),
+//                    cb.like(cb.lower(root.get("contactNumber")), keyword)
+//            ));
+//        }
+//
+//        if (type != null && !type.trim().isEmpty()) {
+//            spec = spec.and((root, query, cb) ->
+//                    cb.equal(root.get("postType"), PostType.valueOf(type.trim().toUpperCase()))
+//            );
+//        }
+//
+//        List<Post> all = postRepo.findAll(spec);
+//
+//        // In-memory filter for postSpecs.value
+//        if (search != null && !search.trim().isEmpty()) {
+//            String lowerKeyword = search.trim().toLowerCase();
+//            all = all.stream()
+//                    .filter(post -> post.getPostSpecs() != null && post.getPostSpecs().stream()
+//                            .anyMatch(specObj -> specObj.getValue() != null && specObj.getValue().toLowerCase().contains(lowerKeyword)))
+//                    .toList();
+//        }
+//
+//        // Manual pagination
+//        int start = (int) pageable.getOffset();
+//        int end = Math.min(start + pageable.getPageSize(), all.size());
+//        List<Post> pageContent = (start <= end) ? all.subList(start, end) : List.of();
+//
+//        return new org.springframework.data.domain.PageImpl<>(pageContent, pageable, all.size());
+//    }
+
 
     @Override
     public Post updatePostStatus(ChangePostStatusReq req) {
@@ -282,4 +332,149 @@ public class PostServiceImpl implements PostService {
     }
 
 
+    @Override
+    public void deletePost(UUID postId) {
+        UUID userId = authenticationService.getCurrentUserId();
+
+        // Fetch the post
+        Post post = postRepo.findById(postId)
+                .orElseThrow(() -> new RuntimeException("Post not found with ID: " + postId));
+
+        // Check ownership
+        if (!post.getPosterId().equals(userId)) {
+            throw new RuntimeException("You are not authorized to delete this post.");
+        }
+
+        if (post.getImageUrls() != null && !post.getImageUrls().isEmpty()) {
+            for (ImageUrl imageUrl : post.getImageUrls()) {
+                firebaseService.deleteFileByUrl(imageUrl.getUrl());
+            }
+            imageUrlRepo.deleteAll(post.getImageUrls());
+        }
+
+        // Delete associated post specs
+        if (post.getPostSpecs() != null && !post.getPostSpecs().isEmpty()) {
+            postSpecRepo.deleteAll(post.getPostSpecs());
+        }
+
+        // Delete the post itself
+        postRepo.delete(post);
+    }
+
+//    @Override
+//    public Page<Post> advanceSearch(AdvanceSearchReq req, Pageable pageable) {
+//        Specification<Post> spec = Specification.where(null);
+//
+//        System.out.println(req);
+//        if (req.getPostType() != null) {
+//            spec = spec.and((root, query, cb) ->
+//                    cb.equal(root.get("postType"), req.getPostType())
+//            );
+//        }
+//
+//        if (req.getCategory() != null && !req.getCategory().trim().isEmpty()) {
+//            spec = spec.and((root, query, cb) ->
+//                    cb.equal(root.get("category"), req.getCategory().trim())
+//            );
+//        }
+//
+//        if (req.getPostSpec() != null && !req.getPostSpec().isEmpty()) {
+//            java.util.Set<UUID> postIds = new java.util.HashSet<>();
+//            for (var entry : req.getPostSpec().entrySet()) {
+//                String name = entry.getKey();
+//                String value = entry.getValue();
+//                if (name != null && value != null) {
+//                    List<PostSpec> matchingSpecs = postSpecRepo.findByValueContainingIgnoreCase(value);
+//                    matchingSpecs.stream()
+//                            .filter(ps -> ps.getName().equalsIgnoreCase(name))
+//                            .map(ps -> ps.getPost().getPostId())
+//                            .forEach(postIds::add);
+//                }
+//            }
+//            if (postIds.isEmpty()) {
+//                return Page.empty(pageable);
+//            }
+//            spec = spec.and((root, query, cb) -> root.get("postId").in(postIds));
+//        }
+//
+//        return postRepo.findAll(spec, pageable);
+//    }
+
+    @Override
+    public Page<PostDTO> advanceSearch(AdvanceSearchReq req, Pageable pageable) {
+        Specification<Post> spec = Specification.not((root, query, cb) -> cb.disjunction());
+
+        if (req.getPostType() != null) {
+            spec = spec.and((root, query, cb) ->
+                    cb.equal(root.get("postType"), req.getPostType().toUpperCase())
+            );
+        }
+
+        if (req.getCategory() != null && !req.getCategory().trim().isEmpty()) {
+            spec = spec.and((root, query, cb) ->
+                    cb.equal(root.get("category"), req.getCategory().trim())
+            );
+        }
+
+        if (req.getPostSpec() != null && !req.getPostSpec().isEmpty()) {
+            java.util.Set<UUID> postIds = new java.util.HashSet<>();
+            for (var entry : req.getPostSpec().entrySet()) {
+                String name = entry.getKey();
+                String value = entry.getValue();
+                if (name != null && value != null) {
+                    List<PostSpec> matchingSpecs = postSpecRepo.findByValueContainingIgnoreCase(value);
+                    matchingSpecs.stream()
+                            .filter(ps -> ps.getName().equalsIgnoreCase(name))
+                            .map(ps -> ps.getPost().getPostId())
+                            .forEach(postIds::add);
+                }
+            }
+            if (postIds.isEmpty()) {
+                return Page.empty(pageable);
+            }
+            spec = spec.and((root, query, cb) -> root.get("postId").in(postIds));
+        }
+
+        Page<Post> postPage = postRepo.findAll(spec, pageable);
+
+        return postPage.map(post -> {
+            PostDTO dto = new PostDTO();
+            dto.setPostId(post.getPostId());
+            dto.setPosterId(post.getPosterId());
+            dto.setContactNumber(post.getContactNumber());
+            dto.setTitle(post.getTitle());
+            dto.setPostType(post.getPostType().name());
+            dto.setDescription(post.getDescription());
+            dto.setCategory(post.getCategory());
+            dto.setDistrict(post.getDistrict());
+            dto.setCity(post.getCity());
+            dto.setSubDistrict(post.getSubDistrict());
+            dto.setPostOffice(post.getPostOffice());
+            dto.setRoadAddress(post.getRoadAddress());
+            dto.setAddress(post.getAddress());
+            dto.setCreated(post.getCreated());
+            dto.setUpdated(post.getUpdated());
+            dto.setStatus(post.getStatus().name());
+
+            // Map postSpecs
+            if (post.getPostSpecs() != null) {
+                dto.setPostSpecs(post.getPostSpecs().stream().map(ps -> {
+                    PostSpecDTO psDto = new PostSpecDTO();
+                    psDto.setName(ps.getName());
+                    psDto.setValue(ps.getValue());
+                    return psDto;
+                }).toList());
+            }
+            // Map imageUrls
+            if (post.getImageUrls() != null) {
+                dto.setImageUrls(post.getImageUrls().stream().map(img -> {
+                    ImageUrlDTO imgDto = new ImageUrlDTO();
+                    imgDto.setId(img.getId());
+                    imgDto.setUrl(img.getUrl());
+                    return imgDto;
+                }).toList());
+            }
+            return dto;
+        });
+    }
 }
