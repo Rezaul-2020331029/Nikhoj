@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: Auth-Service
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+  datasource:
+    url: jdbc:postgresql://aws-0-ap-south-1.pooler.supabase.com:5432/postgres?sslmode=require
+    username: postgres.xhuxtaljeyejxiraeelg
+    password: tvMsC4YcgdlladlO
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+server:
+  port: 7003
+
+security:
+  jwt:
+    token:
+      secret-key: 6b92c32a9619a918caa8a54fde6d3952e6337d56587db1130491793235efc74e
+    expire-length: 3600000000

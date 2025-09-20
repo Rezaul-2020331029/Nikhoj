@@ -1,0 +1,5 @@
+# Created at 2025-08-09T19:47:54.605
+Boot Manifest-JAR contains absolute paths in classpath 'F:\Dev\Nikhoj\Nikhoj-Backend\Auth-Service\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

@@ -1,0 +1,790 @@
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 86
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Internet of Things connects everyday devices",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022531.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 89
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Mobile development targets smartphone platforms",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022530-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 84
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Version control systems track code changes",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022530.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 90
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Software testing ensures application reliability",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022529-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 84
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Big data analytics reveals hidden patterns",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022529.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 97
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Web development frameworks streamline frontend creation",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022528-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 92
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Agile methodology emphasizes iterative development",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022528.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 88
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Cybersecurity protects against digital threats",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022527-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 90
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Database optimization improves query performance",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022527.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 98
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Artificial intelligence mimics human cognitive functions",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022526.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 90
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Data science combines statistics and programming",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022525-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 98
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Cloud computing revolutionizes infrastructure management",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022525.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 91
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Docker containers simplify application deployment",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022524.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 89
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Microservices architecture improves scalability",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022523-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 96
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "REST APIs provide standardized communication protocols",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022523.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 96
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Natural language processing has advanced significantly",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022522-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 94
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Vector databases enable semantic search capabilities",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022522.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 94
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Spring Boot makes Java development easier and faster",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022521-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 92
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Machine learning is transforming modern technology",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022521.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 85
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "The quick brown fox jumps over the lazy dog",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022520.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 40
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "",
+  "collectionName": ""
+}
+
+<> 2025-08-26T022519-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 54
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "id": "",
+  "text": "",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022519.200.txt
+
+###
+
+POST http://localhost:7050/qdrant/create-collection
+Content-Type: application/json
+Content-Length: 41
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "t1",
+  "vector_size": 1024
+}
+
+<> 2025-08-26T022519-1.200.json
+
+###
+
+POST http://localhost:7050/qdrant/create-collection
+Content-Type: application/x-www-form-urlencoded
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-08-26T022519.415.json
+
+###
+
+POST http://localhost:7050/text/embed
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Kala fahad"
+}
+
+<> 2025-08-26T022519.200.json
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 98
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Internet of Things connects everyday devices",
+  "collectionName": "iot_collection"
+}
+
+<> 2025-08-26T022358-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 104
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Mobile development targets smartphone platforms",
+  "collectionName": "mobile_collection"
+}
+
+<> 2025-08-26T022358.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 96
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Version control systems track code changes",
+  "collectionName": "vcs_collection"
+}
+
+<> 2025-08-26T022357-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 106
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Software testing ensures application reliability",
+  "collectionName": "testing_collection"
+}
+
+<> 2025-08-26T022357.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Big data analytics reveals hidden patterns",
+  "collectionName": "analytics_collection"
+}
+
+<> 2025-08-26T022356.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 109
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Web development frameworks streamline frontend creation",
+  "collectionName": "web_collection"
+}
+
+<> 2025-08-26T022355-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 112
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Agile methodology emphasizes iterative development",
+  "collectionName": "methodology_collection"
+}
+
+<> 2025-08-26T022355.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 105
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Cybersecurity protects against digital threats",
+  "collectionName": "security_collection"
+}
+
+<> 2025-08-26T022354-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 107
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Database optimization improves query performance",
+  "collectionName": "database_collection"
+}
+
+<> 2025-08-26T022354.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 109
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Artificial intelligence mimics human cognitive functions",
+  "collectionName": "ai_collection"
+}
+
+<> 2025-08-26T022353-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 111
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Data science combines statistics and programming",
+  "collectionName": "data_science_collection"
+}
+
+<> 2025-08-26T022353.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 112
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Cloud computing revolutionizes infrastructure management",
+  "collectionName": "cloud_collection"
+}
+
+<> 2025-08-26T022352.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 106
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Docker containers simplify application deployment",
+  "collectionName": "devops_collection"
+}
+
+<> 2025-08-26T022351-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 110
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Microservices architecture improves scalability",
+  "collectionName": "architecture_collection"
+}
+
+<> 2025-08-26T022351.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 108
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "REST APIs provide standardized communication protocols",
+  "collectionName": "api_collection"
+}
+
+<> 2025-08-26T022350-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 108
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Natural language processing has advanced significantly",
+  "collectionName": "nlp_collection"
+}
+
+<> 2025-08-26T022350.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 112
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Vector databases enable semantic search capabilities",
+  "collectionName": "vector_db_collection"
+}
+
+<> 2025-08-26T022349-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 107
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Spring Boot makes Java development easier and faster",
+  "collectionName": "java_collection"
+}
+
+<> 2025-08-26T022349.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 103
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Machine learning is transforming modern technology",
+  "collectionName": "ai_collection"
+}
+
+<> 2025-08-26T022348-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 100
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "The quick brown fox jumps over the lazy dog",
+  "collectionName": "test_collection_1"
+}
+
+<> 2025-08-26T022348.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 40
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "",
+  "collectionName": ""
+}
+
+<> 2025-08-26T022346-1.200.txt
+
+###
+
+POST http://localhost:7050/test/embed
+Content-Type: application/json
+Content-Length: 54
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "id": "",
+  "text": "",
+  "collectionName": "t1"
+}
+
+<> 2025-08-26T022346.200.txt
+
+###
+
+POST http://localhost:7050/qdrant/create-collection
+Content-Type: application/json
+Content-Length: 41
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "t1",
+  "vector_size": 1024
+}
+
+<> 2025-08-26T022346.200.json
+
+###
+
+POST http://localhost:7050/qdrant/create-collection
+Content-Type: application/x-www-form-urlencoded
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-08-26T022345.415.json
+
+###
+
+POST http://localhost:7050/text/embed
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "text": "Kala fahad"
+}
+
+<> 2025-08-26T022345.200.json
+
+###
+
