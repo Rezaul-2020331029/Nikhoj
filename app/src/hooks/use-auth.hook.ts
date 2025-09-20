@@ -20,7 +20,7 @@ export function useSignup() {
 			options: {
 				onSuccess: async ({ token }) => {
 					setToken(token);
-					await queryClient.ensureQueryData({ queryKey: ["profile"] as const });
+					await queryClient.refetchQueries({ queryKey: ["profile"] as const });
 					navigate({ to: "/" });
 				},
 			},
@@ -39,7 +39,7 @@ export function useLogin() {
 			options: {
 				onSuccess: async ({ token }) => {
 					setToken(token);
-					await queryClient.ensureQueryData({ queryKey: ["profile"] as const });
+					await queryClient.refetchQueries({ queryKey: ["profile"] as const });
 					navigate({ to: "/" });
 				},
 
