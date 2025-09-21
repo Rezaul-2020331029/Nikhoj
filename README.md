@@ -5,7 +5,7 @@
 - docker build -t monolithic-backend-app .
 - docker compose up
 
-## Frontendcd
+## Frontend
 - cd app
 - npm install
 - npm run dev
